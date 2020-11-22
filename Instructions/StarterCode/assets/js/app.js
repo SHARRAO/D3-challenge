@@ -64,40 +64,40 @@ function makeResponsive() {
       return circlesGroup;
     }
     
-    // function used for updating circles group with new tooltip
-    function updateToolTip(chosenXAxis, circlesGroup) {
+    // // function used for updating circles group with new tooltip
+    // function updateToolTip(chosenXAxis, circlesGroup) {
     
-      var label;
+    //   var label;
     
-      if (chosenXAxis === "poverty") {
-        label = "In Poverty (%):";
-      }
-      else {
-        label = "state:";
-      }
+    //   if (chosenXAxis === "poverty") {
+    //     label = "In Poverty (%):";
+    //   }
+    //   else {
+    //     label = "state:";
+    //   }
     
-      var toolTip = d3.tip()
-        .attr("class", "tooltip")
-        .offset([80, -60])
-        .html(function(d) {
-          return (`${d.obesity}<br>${label} ${d[chosenXAxis]}`);
-        });
+    //   var toolTip = d3.tip()
+    //     .attr("class", "tooltip")
+    //     .offset([80, -60])
+    //     .html(function(d) {
+    //       return (`${d.obesity}<br>${label} ${d[chosenXAxis]}`);
+    //     });
     
-      circlesGroup.call(toolTip);
+    //   circlesGroup.call(toolTip);
     
-      circlesGroup.on("mouseover", function(data) {
-        toolTip.show(data);
-      })
-        // onmouseout event
-        .on("mouseout", function(data, index) {
-          toolTip.hide(data);
-        });
+    //   circlesGroup.on("mouseover", function(data) {
+    //     toolTip.show(data);
+    //   })
+    //     // onmouseout event
+    //     .on("mouseout", function(data, index) {
+    //       toolTip.hide(data);
+    //     });
     
-      return circlesGroup;
-    }
+    //   return circlesGroup;
+    // }
     
     // Retrieve data from the CSV file and execute everything below
-    d3.csv("data.csv").then(function(data, err) {
+    d3.csv("assets/data/data.csv").then(function(data, err) {
       if (err) throw err;
     
       // parse data
@@ -167,8 +167,8 @@ function makeResponsive() {
         .classed("axis-text", true)
         .text("Lacks Healthcare (%)");
     
-      // updateToolTip function above csv import
-      var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
+      // // updateToolTip function above csv import
+      // var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
     
       // x axis labels event listener
       labelsGroup.selectAll("text")
